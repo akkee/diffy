@@ -19,15 +19,15 @@ module Diffy
       cleaned = clean_line(line)
       case line
       when /^(---|\+\+\+|\\\\)/
-        '    <li class="diff-comment"><span>' + line.chomp + '</span></li>'
+        '    <div class="li-eq diff-comment"><span>' + line.chomp + '</span></div>'
       when /^\+/
-        '    <li class="ins"><ins>' + cleaned + '</ins></li>'
+        '    <div class="li-eq ins"><ins>' + cleaned + '</ins></div>'
       when /^-/
-        '    <li class="del"><del>' + cleaned + '</del></li>'
+        '    <div class="li-eq del"><del>' + cleaned + '</del></div>'
       when /^ /
-        '    <li class="unchanged"><span>' + cleaned + '</span></li>'
+        '    <div class="li-eq unchanged"><span>' + cleaned + '</span></div>'
       when /^@@/
-        '    <li class="diff-block-info"><span>' + line.chomp + '</span></li>'
+        '    <div class="li-eq diff-block-info"><span>' + line.chomp + '</span></div>'
       end
     end
 
@@ -44,7 +44,7 @@ module Diffy
       if lines.empty?
         %'<div class="diff"></div>'
       else
-        %'<div class="diff">\n  <ul>\n#{lines.join("\n")}\n  </ul>\n</div>\n'
+        %'<div class="diff">\n  <div class="ul-eq">\n#{lines.join("\n")}\n  </div>\n</div>\n'
       end
     end
 
